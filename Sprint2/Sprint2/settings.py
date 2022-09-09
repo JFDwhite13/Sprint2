@@ -37,13 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'PERSONS'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -74,10 +75,14 @@ WSGI_APPLICATION = 'Sprint2.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+  'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd4o1ufkm1d8fuv',
+        'USER': 'rtcprfncjgoxlu',
+        'PASSWORD': '071c9789be9ebfb34d2ffbd33c49a985f2b0d37a1556d34ba31f9e0a3de17d8f',
+        'HOST': 'ec2-18-214-35-70.compute-1.amazonaws.com',
+        'PORT': '5432',
+  }
 }
 
 
