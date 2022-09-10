@@ -4,5 +4,5 @@ from . import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include("persons.urls"))
+    path('',include("PERSONS.urls"))
 ]
