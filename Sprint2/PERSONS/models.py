@@ -7,7 +7,7 @@ class patients(models.Model):
     patientid = models.BigIntegerField(primary_key=True, unique=True)
     patientfirstname = models.CharField(max_length=60)
     patientlastname = models.CharField(max_length=60)
-    patientphonenumber = models.BigIntegerField
+    patientphonenumber = models.BigIntegerField(default=0)
     patientgender= models.CharField(max_length=20)
     patientaddress = models.CharField(max_length=200)
     patientcity = models.CharField(max_length=200)
@@ -19,7 +19,7 @@ class doctorandnurse(models.Model):
     dnid = models.BigIntegerField(primary_key=True,unique=True)
     dFirstname = models.CharField(max_length=60)
     dLastname = models.CharField(max_length=60)
-    dPhoneNumber= models.BigIntegerField
+    dPhoneNumber= models.BigIntegerField(default=0)
     dgender=models.CharField(max_length=60)
     dspecialty = models.CharField(max_length=60)
     dresgister=models.CharField(max_length=60)
@@ -30,7 +30,7 @@ class helper(models.Model):
     hid = models.BigIntegerField(primary_key=True,unique=True)
     hfirstname = models.CharField(max_length=60)
     hlastname = models.CharField(max_length=60)
-    hphoneNumber = models.BigIntegerField
+    hphoneNumber = models.BigIntegerField(default=0)
     hgender= models.CharField(max_length=60)
     hidpatient = models.ForeignKey(patients, related_name='helperpatientid', on_delete=models.DO_NOTHING)
     hkinship = models.CharField(max_length=60)
@@ -42,7 +42,7 @@ class asigned(models.Model):
 
 class vitalsigns(models.Model):
     vsidpatient	= models.ForeignKey(patients, related_name='vitalpatientid', on_delete=models.DO_NOTHING)
-    vsdatetime = models.DateTimeField
+    vsdatetime = models.DateTimeField(default="0000-00-00")
     oximetry= models.CharField(max_length=60)
     respiratoryrate = models.CharField(max_length=60)
     heartrate = models.CharField(max_length=60)
@@ -54,7 +54,7 @@ class suggest(models.Model):
     spatientid = models.ForeignKey(patients, related_name='suggestpatientid', on_delete=models.DO_NOTHING)
     sdoctor = models.ForeignKey(doctorandnurse, related_name='suggestdnid', on_delete=models.DO_NOTHING)
     nsuggest = models.AutoField(primary_key=True)
-    datesuggest = models.DateTimeField
+    datesuggest = models.DateTimeField(default="0000-00-00")
     suggest =  models.CharField(max_length=800)
 
 class diagnosis(models.Model):
