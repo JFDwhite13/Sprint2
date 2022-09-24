@@ -7,6 +7,7 @@ from . import views
 
 urlpatterns = [
     path('',views.Login,name=''),
+    path('newperson', views.newperson, name='Nueva persona'),
     path('newdoctor', views.newdoctor, name ='Nuevo doctor'),
     path('newpatient', views.newpatient, name='Nuevo paciente'),
     path('newhelper', views.newhelper, name='Nuevo ayudante'),

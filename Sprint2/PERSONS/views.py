@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadReq
 
 from django.shortcuts import render
 
-from .models import doctorandnurse, helper, patients
+from .models import doctorandnurse, helper, patients, persons
 
 def Login(request):
 
@@ -37,6 +37,28 @@ def newpatient(request):
     else:
         return HttpResponseNotAllowed(['POST'], "METODO NO PERMITIDO")
 
+def newperson(request):
+    if request.method == "POST":
+        print("method:", request.method)
+        try:
+            data = json.loads(request.body)
+            print(data)
+            patient = persons(
+                pid = data["pid"],
+                pfirstname = data["pfirstname"],
+                plastname = data["plastname"],
+                pemail = data["pemail"],
+                ppassword = data["ppassword"]
+            )
+            print(patient)
+            patient.save()
+            return HttpResponse("usuario creado")
+        except:
+            return HttpResponseBadRequest("Datos invalidos")
+    elif request.method == "GET":
+        return HttpResponseNotAllowed(['POST'], "Para agregar un usuario debes usar POST")
+    else:
+        return HttpResponseNotAllowed(['POST'], "METODO NO PERMITIDO")
 
 def newdoctor(request):
     if request.method == "POST":

@@ -1,8 +1,17 @@
 from pyclbr import Class
 from re import T
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.hashers import make_password
 
 # Create your models here.
+class persons(models.Model):
+    pid=models.BigIntegerField(primary_key=True, unique=True)
+    pfirstname= models.CharField(max_length=60)
+    plastname= models.CharField(max_length=60)
+    pemail=models.CharField(max_length=90)
+    ppassword=models.CharField(max_length=20)
+
 class patients(models.Model):
     patientid = models.BigIntegerField(primary_key=True, unique=True)
     patientfirstname = models.CharField(max_length=60)
