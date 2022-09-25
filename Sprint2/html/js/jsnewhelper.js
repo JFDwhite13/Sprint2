@@ -1,4 +1,4 @@
-const newCustomerUrl = 'https://db-hospital-c3g53.herokuapp.com/newpatient';
+const newHelperurl = 'https://db-hospital-c3g53.herokuapp.com/newhelper';
 
 function validar_nombre_apellido(val) {
     const letters = /^[A-Z a-zÁÉÍÓÚáéíóúñ]+$/;
@@ -20,23 +20,22 @@ function validar_contrasena(val) {
 function Collectdata(evt){
     evt.preventDefault();
 
-    const patientid = document.registro.id.value;
-    const patientfirstname = document.registro.firstname.value;
-    const patientlastname  = document.registro.lastname.value;
-    const patientphonenumber = document.registro.phonenumber.value;
-    const patientgender = document.registro.gender.value;
-    const patientaddress = document.registro.address.value;
-    const patientcity = document.registro.city.value;
-    const patientBirthday = document.registro.Birthday.value;
-    const patientLongitude = document.registro.longitude.value;
-    const patientLatitude = document.registro.latitude.value;
+    const hid = document.registro.id.value;
+    const hfirstname = document.registro.firstname.value;
+    const hlastname  = document.registro.lastname.value;
+    const hphoneNumber = document.registro.phonenumber.value;
+    const hgender = document.registro.gender.value;
+    const hidpatient = document.registro.patientid.value;
+    const hkinship = document.registro.parents.value;
+    const hemail = document.registro.email.value;
 
-    let result = validar_nombre_apellido(patientfirstname);
+
+    let result = validar_nombre_apellido(hfirstname);
     if (!result) {
         alert('Nombre no válido');
         return;
     }
-    result = validar_nombre_apellido(patientlastname);
+    result = validar_nombre_apellido(hlastname);
     if (!result) {
         alert('Apellido no válido');
         return;
@@ -44,16 +43,14 @@ function Collectdata(evt){
  
     
     const customer ={
-        patientid : patientid,
-        patientfirstname : patientfirstname,
-        patientlastname :patientlastname,
-        patientphonenumber : patientphonenumber,
-        patientgender :patientgender,
-        patientaddress : patientaddress,
-        patientcity :patientcity,
-        patientBirthday :patientBirthday,
-        patientLatitude:patientLatitude,
-        patientLongitude:patientLongitude
+        hid : hid,
+        hfirstname : hfirstname,
+        hlastname :hlastname,
+        hphoneNumber : hphoneNumber,
+        hgender :hgender,
+        hidpatient : hidpatient,
+        hkinship :hkinship,
+        hemail :hemail
     
     }
     /*
@@ -65,7 +62,7 @@ function Collectdata(evt){
 }
 
 function sendData(data) {
-    fetch(newCustomerUrl, {
+    fetch(newHelperurl, {
         method: "POST",
         headers: {
             "Content-Type": "text/json"
@@ -92,7 +89,7 @@ function sendData(data) {
 function handleSuccess() {
     document.getElementById("formData").remove();
     const message = document.createElement("p");
-    message.innerHTML = "paciente creado exitosamente.";
+    message.innerHTML = "Familiar creado exitosamente.";
     const info = document.getElementById("info");
     info.appendChild(message);
 }
@@ -100,7 +97,7 @@ function handleSuccess() {
 function handleError() {
     document.getElementById("formData").remove();
     const message = document.createElement("p");
-    message.innerHTML = "No se pudo crear el paciente. Intente luego.";
+    message.innerHTML = "No se pudo crear el familiar. Intente luego.";
     const info = document.getElementById("info");
     info.appendChild(message);
 }

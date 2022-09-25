@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Paciente || Hospitalizacion en casa</title>
+    <title>Registro Familiar || Hospitalizacion en casa</title>
     <link rel="stylesheet" href="styles/newpatient.css">
 </head>
 <body>
@@ -50,28 +50,18 @@
                     </div>
                     <div class="user-box">
                         
-                        <input type="text" name="address" required="">
-                        <label>Direccion</label>
+                        <input type="number" name="patientid" required="">
+                        <label>Documento del paciente</label>
                     </div>
                     <div class="user-box">
                         
-                        <input type="text" name="city" required="">
-                        <label>Ciudad</label>
+                        <input type="text" name="parents" required="">
+                        <label>parentesco</label>
                     </div>
                     <div class="user-box">
                         
-                        <input type="date" name="Birthday" required="">
-                        <label>Fecha de nacimiento</label>
-                    </div>
-                    <div class="user-box">
-                        
-                        <input type="text" name="longitude">
-                        <label>Logitud</label>
-                    </div>
-                    <div class="user-box">
-                        
-                        <input type="text" name="latitude">
-                        <label>Latitud</label>
+                        <input type="email" name="email" required="">
+                        <label>Correo de contacto</label>
                     </div>
                     <div class="botton-box">
                         <input id="enviar" type="submit" value="Registrarse">
@@ -85,7 +75,7 @@
     <h2>‎</h2>
     </footer>
 
-    <script src="js/jsnewpatient.js"></script>
+    <script src="js/jsnewhelper.js"></script>
 
 </body>
 </html>

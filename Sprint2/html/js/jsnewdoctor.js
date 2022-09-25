@@ -1,4 +1,4 @@
-const newCustomerUrl = 'https://db-hospital-c3g53.herokuapp.com/newpatient';
+const newDoctorurl = 'https://db-hospital-c3g53.herokuapp.com/newdoctor'
 
 function validar_nombre_apellido(val) {
     const letters = /^[A-Z a-zÁÉÍÓÚáéíóúñ]+$/;
@@ -20,23 +20,20 @@ function validar_contrasena(val) {
 function Collectdata(evt){
     evt.preventDefault();
 
-    const patientid = document.registro.id.value;
-    const patientfirstname = document.registro.firstname.value;
-    const patientlastname  = document.registro.lastname.value;
-    const patientphonenumber = document.registro.phonenumber.value;
-    const patientgender = document.registro.gender.value;
-    const patientaddress = document.registro.address.value;
-    const patientcity = document.registro.city.value;
-    const patientBirthday = document.registro.Birthday.value;
-    const patientLongitude = document.registro.longitude.value;
-    const patientLatitude = document.registro.latitude.value;
+    const dnid = document.registro.id.value;
+    const dFirstname = document.registro.firstname.value;
+    const dLastname  = document.registro.lastname.value;
+    const dPhoneNumber = document.registro.phonenumber.value;
+    const dgender = document.registro.gender.value;
+    const dspecialty = document.registro.especialidad.value;
+    const dresgister = document.registro.register.value;
 
-    let result = validar_nombre_apellido(patientfirstname);
+    let result = validar_nombre_apellido(dFirstname);
     if (!result) {
         alert('Nombre no válido');
         return;
     }
-    result = validar_nombre_apellido(patientlastname);
+    result = validar_nombre_apellido(dLastname);
     if (!result) {
         alert('Apellido no válido');
         return;
@@ -44,16 +41,14 @@ function Collectdata(evt){
  
     
     const customer ={
-        patientid : patientid,
-        patientfirstname : patientfirstname,
-        patientlastname :patientlastname,
-        patientphonenumber : patientphonenumber,
-        patientgender :patientgender,
-        patientaddress : patientaddress,
-        patientcity :patientcity,
-        patientBirthday :patientBirthday,
-        patientLatitude:patientLatitude,
-        patientLongitude:patientLongitude
+        dnid : dnid,
+        dFirstname : dFirstname,
+        dLastname :dLastname,
+        Telefono : dPhoneNumber,
+        dgender :dgender,
+        dspecialty : dspecialty,
+        dresgister :dresgister,
+        isdoctor: true
     
     }
     /*
@@ -65,7 +60,7 @@ function Collectdata(evt){
 }
 
 function sendData(data) {
-    fetch(newCustomerUrl, {
+    fetch(newDoctorurl, {
         method: "POST",
         headers: {
             "Content-Type": "text/json"
@@ -92,7 +87,7 @@ function sendData(data) {
 function handleSuccess() {
     document.getElementById("formData").remove();
     const message = document.createElement("p");
-    message.innerHTML = "paciente creado exitosamente.";
+    message.innerHTML = "Doctor creado exitosamente.";
     const info = document.getElementById("info");
     info.appendChild(message);
 }
@@ -100,7 +95,7 @@ function handleSuccess() {
 function handleError() {
     document.getElementById("formData").remove();
     const message = document.createElement("p");
-    message.innerHTML = "No se pudo crear el paciente. Intente luego.";
+    message.innerHTML = "No se pudo crear el Doctor. Intente luego.";
     const info = document.getElementById("info");
     info.appendChild(message);
 }

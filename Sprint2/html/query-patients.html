@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Sprint2/Sprint2/html/styles/query-patients.css">
-    <title>Consulta || Hospitalizacion en casa</title>
+    <title>Consulta Pacientes || Hospitalizacion en casa</title>
 </head>
 <body>
     <header>
@@ -18,10 +18,14 @@
     
     <div class="main-component">
         <h2>Listado de Pacientes</h2>
+        <div class="form-group">
+            <label >Search:</label>
+            <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Busque el paciente aqui">
+        </div>
 
         <div id="info-customers">
             <div class="mt-5" >
-                <table>
+                <table id="table">
                     <div class="table-header">
                         <thead>
                             <tr>
@@ -58,5 +62,21 @@
     </div>
 
     <script src="/Sprint2/Sprint2/html/js/jsquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        // Write on keyup event of keyword input element
+        $(document).ready(function(){
+        $("#search").keyup(function(){
+        _this = this;
+        // Show only matching TR, hide rest of them
+        $.each($("#table tbody tr"), function() {
+        if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+        $(this).hide();
+        else
+        $(this).show();
+        });
+        });
+       });
+       </script>
 </body>
 </html>

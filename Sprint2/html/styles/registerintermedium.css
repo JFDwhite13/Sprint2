@@ -43,54 +43,43 @@ header nav a:hover{
     color: black;
 }
 
-.main-component h2{
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     text-align: center;
-}
-
-
-.form-group{
-    text-align: right;
-    padding-right: 135px;
-}
-
-
-
-table, td, th {
-    border: 2px solid rgb(196, 196, 196);
-    border-radius: 8px;
   }
-
-table {
-    border-collapse: collapse;
+  
+  li {
+    margin-top: 60px;
+    margin-left: 250px;
+    margin-right: 300px;
     align-items: center;
     text-align: center;
-    margin-top:20px ;
-    margin-left: 150px;
-    width: 1100px;
-    height: 250px;
-}
+  }
+  
+  li a {
+    display: list-item;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border: 4px solid rgb(212, 212, 212);
+    background-color:rgb(37, 37, 37);
+    align-items: center;
+  }
+  
 
-table thead{
-    height: 60px;
-    background-color: rgb(96, 127, 167);
-}
+  li a:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px #ffffff,
+                0 0 15px #ffffff,
+                0 0 25px #08efff,
+                0 0 35px #08efff;
+    color: black;
+  }
 
-table th:hover{
-    background-color:whitesmoke ;
-    
-}
-
-table tbody tr:hover{
-    border-radius: none;
-    background-color: rgb(184, 202, 250);
-
-}
-
-table td{
-    border-radius: none;
-    height: 30px;
-}
-
-tr:nth-child(even){
-    background-color: #f2f2f2;
-}
+  li i{
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
