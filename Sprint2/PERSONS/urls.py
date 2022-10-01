@@ -12,5 +12,7 @@ urlpatterns = [
     path('newpatient', views.newpatient, name='Nuevo paciente'),
     path('newhelper', views.newhelper, name='Nuevo ayudante'),
     path('viewpatients', views.getpatients, name='Obtener pacientes'),
-    path('viewpatients/<int:id>', views.getexclusivepatient, name="Obtener un paciente")
+    path('viewpatients/<int:id>', views.getexclusivepatient, name="Obtener un paciente"),
+    path('asign',views.asignation, name='Asignar paciente'),
+    path('signs',views.vitalsing, name='Asignar signos')
 ]

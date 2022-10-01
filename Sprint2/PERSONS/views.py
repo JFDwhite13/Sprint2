@@ -1,9 +1,9 @@
 import json
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadRequest, HttpResponseServerError
-
+import datetime
 from django.shortcuts import render
 
-from .models import doctorandnurse, helper, patients, persons
+from .models import doctorandnurse, helper, patients, persons, asigned, vitalsigns
 
 def Login(request):
 
@@ -111,6 +111,53 @@ def newhelper(request):
     else:
         return HttpResponseNotAllowed(['POST'], "METODO NO PERMITIDO")
 
+def asignation(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            print(data)
+            asign= asigned(
+                adoctor = doctorandnurse.objects.get(dnid = data["adoctor"]),
+                apatient = patients.objects.get(patientid = data["apatient"])
+            )
+            print(asign)
+            asign.save()
+            return HttpResponse("Paciente asignado")
+        except:
+            return HttpResponseBadRequest("Datos invalidos revise la cedula del paciente o demas datos")
+            
+    elif request.method == "GET":
+        return HttpResponseNotAllowed(['POST'], "Para asignar un paciente debes usar POST")
+    else:
+        return HttpResponseNotAllowed(['POST'], "METODO NO PERMITIDO")
+
+
+def vitalsing(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            print(data)
+            vital = vitalsigns(
+                vsidpatient = patients.objects.get(patientid = data["apatient"]),
+                vsdatetime = datetime.datetime.now(),
+                oximetry = data["oximetry"],
+                respiratoryrate = data["respiratoryrate"],
+                heartrate = data["heartrate"],
+                temperature = data["temperature"],
+                bloodpressure = data["bloodpressure"],
+                bloodglucose = data["bloodglucose"]
+            )
+            print(vital)
+            vital.save()
+            return HttpResponse("Signos vitales guardados")
+        except:
+            return HttpResponseBadRequest("Datos invalidos revise la cedula del paciente o demas datos")
+            
+    elif request.method == "GET":
+        return HttpResponseNotAllowed(['POST'], "Para asignar un paciente debes usar POST")
+    else:
+        return HttpResponseNotAllowed(['POST'], "METODO NO PERMITIDO")
+#---get---
 def getpatients(request):
     if request.method == 'GET':
         try:
